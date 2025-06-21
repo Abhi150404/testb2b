@@ -34,7 +34,8 @@ exports.getUserChats = async (req, res) => {
 // GET: Admin fetches all messages
 exports.getAllChatsForAdmin = async (req, res) => {
   try {
-    const chats = await Chat.find({}).populate('senderId receiverId').sort({ timestamp: -1 });
+const chats = await Chat.find({}).sort({ timestamp: -1 });
+
     res.json({ success: true, data: chats });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
